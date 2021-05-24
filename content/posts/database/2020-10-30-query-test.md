@@ -17,12 +17,11 @@ title: 从零开始的查询优化
 
 #### 思路
 找到每一个需要排除的部门，以及每一个排除的部门的子部门，然后分别查出来需要排除的人,最后通过stream的flatMap进行聚合
-```
-           return allDepartment.stream().flatMap(department -> {
-               List<EmployeeDetail> allByDepartmentId = employeeRepo.findAllByDepartmentId(department.getDepartmentId());
-               return allByDepartmentId.stream();
-           }).collect(Collectors.toList());
-```
+
+    return allDepartment.stream().flatMap(department -> {
+        List<EmployeeDetail> allByDepartmentId = employeeRepo.findAllByDepartmentId(department.getDepartmentId());
+        return allByDepartmentId.stream();
+    }).collect(Collectors.toList());
 
 #### 耗费时间
 `30616ms`
