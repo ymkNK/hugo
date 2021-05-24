@@ -1,8 +1,8 @@
-baseurl: https://example.com
+baseurl: https://lllovol.com
 languageCode: en-us
 theme: hugo-theme-stack
 paginate: 5
-title: Example Site
+title: lllovol
 
 # Change it to your Disqus shortname before using
 disqusShortname: hugo-theme-stack
@@ -15,7 +15,7 @@ googleAnalytics:
 DefaultContentLanguage: en
 
 permalinks:
-    post: /p/:slug/
+    post: /:slug/
     page: /:slug/
 
 params:
@@ -23,11 +23,11 @@ params:
         - post
     featuredImageField: image
     rssFullContent: true
-    favicon:
+    favicon: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
 
     footer:
-        since: 2020
-        customText:
+        since: 2018
+        customText: Owner Rainbowly
 
     dateFormat:
         published: Jan 02, 2006
@@ -35,10 +35,10 @@ params:
 
     sidebar:
         emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        subtitle: Stay Hungry, Stay Foolish
         avatar:
-            local: true
-            src: img/avatar.png
+            local: false
+            src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
 
     article:
         math: false
