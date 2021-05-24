@@ -1,6 +1,6 @@
 ---
-title: About Me
-description: A software engineer
+title: About
+description: About me
 date: '2021-5-25'
 aliases:
   - about-me
@@ -13,8 +13,10 @@ menu:
         weight: -90
         pre: user
 ---
+- A software engineer.
 - Graduated from Nankai University in 2019.
 - Come from SiChuan.
 - Work in Beijing now.
+
 
 
