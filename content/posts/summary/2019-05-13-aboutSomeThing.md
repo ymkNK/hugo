@@ -4,7 +4,7 @@ categories: Summary
 date: "2019-05-13T13:02:36Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/4.jpg
 subtitle: 随笔杂想
-tag: Summary
+tags: [Summary]
 title: 随笔杂想
 ---
 # 前言

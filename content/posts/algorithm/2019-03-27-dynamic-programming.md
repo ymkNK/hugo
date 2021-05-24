@@ -4,7 +4,7 @@ categories: Algorithm
 date: "2019-03-27T20:38:15Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
 subtitle: 动态规划
-tag: Algorithm
+tags: [Algorithm]
 title: Dynamic Programming-钢条切割问题
 ---
 # 前言

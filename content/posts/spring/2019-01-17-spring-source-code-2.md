@@ -4,7 +4,7 @@ categories: Spring
 date: "2019-01-17T11:56:50Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
 subtitle: 《Spring源码深度解析》读后感(二)
-tag: Spring
+tags: [Spring]
 title: 《Spring源码深度解析》读后感(二)Bean的标签解析
 ---
 # 两种标签

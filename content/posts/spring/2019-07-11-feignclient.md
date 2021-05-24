@@ -4,7 +4,7 @@ categories: Spring
 date: "2019-07-11T16:31:53Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/8.jpg
 subtitle: fallback
-tag: Spring
+tags: [Spring]
 title: FeignClient的FallBack处理
 ---
 # 前言

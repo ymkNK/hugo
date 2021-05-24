@@ -4,7 +4,7 @@ categories: database
 date: "2020-09-18T17:27:51Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/6.jpg
 subtitle: what is transaction?
-tag: database
+tags: [database]
 title: 什么是事务？
 ---
 ## 背景

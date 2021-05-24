@@ -4,7 +4,7 @@ categories: MicroService
 date: "2019-07-16T20:58:05Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/9.jpg
 subtitle: 小鲸鱼的成长史
-tag: MicroService
+tags: [MicroService]
 title: 小鲸鱼的成长史
 ---
 # 前言

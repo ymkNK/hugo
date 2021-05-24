@@ -4,7 +4,7 @@ categories: mysql
 date: "2021-01-27T14:46:13Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/6.jpg
 subtitle: how-a-sql-executes
-tag: mysql
+tags: [mysql]
 title: 基础架构：一条SQL更新语句是如何执行的？
 ---
 

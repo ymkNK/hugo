@@ -4,7 +4,7 @@ categories: database
 date: "2020-10-30T16:28:10Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/5.jpg
 subtitle: record-query-upgrade
-tag: database
+tags: [database]
 title: 从零开始的查询优化
 ---
 ### 背景
