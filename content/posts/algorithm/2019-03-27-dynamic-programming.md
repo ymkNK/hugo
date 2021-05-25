@@ -1,12 +1,13 @@
 ---
 author: ymkNK
-categories: Algorithm
+categories: ["Algorithm"]
 date: "2019-03-27T20:38:15Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
 subtitle: 动态规划
-tags: [Algorithm]
+tags: ["Algorithm"]
 title: Dynamic Programming-钢条切割问题
 ---
+
 # 前言
 动态规划是算法中的一大类，是一个求解最优解的值的问题
 >本文内容主要来自于 《算法导论第三版第四部分第15章 动态规划》
