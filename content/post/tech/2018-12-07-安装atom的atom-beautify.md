@@ -4,7 +4,8 @@ categories: Tech
 date: "2018-12-07T17:03:25Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/3.jpg
 subtitle: 安装atom的atom-beautify
-tags: [Tech]
+tags: 
+    - Tech
 title: 安装atom的atom-beautify
 ---
 # 前言

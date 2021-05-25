@@ -4,7 +4,8 @@ categories: Spring
 date: "2020-07-04T00:34:38Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/2.jpg
 subtitle: singleton
-tags: [Spring]
+tags: 
+    - Spring
 title: 单例模式的实现方式
 ---
 ## 什么是单例模式？

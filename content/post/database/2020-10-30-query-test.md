@@ -1,10 +1,11 @@
 ---
 author: ymkNK
-categories: database
+categories: Database
 date: "2020-10-30T16:28:10Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/5.jpg
 subtitle: record-query-upgrade
-tags: [database]
+tags: 
+    - Database
 title: 从零开始的查询优化
 ---
 ### 背景

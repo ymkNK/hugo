@@ -4,7 +4,8 @@ categories: Tech
 date: "2019-08-07T10:08:30Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/9.jpg
 subtitle: Idea代码飘红问题解决方式
-tags: [Tech]
+tags: 
+    - Tech
 title: Idea代码飘红的问题解决方式
 ---
 ## 前言

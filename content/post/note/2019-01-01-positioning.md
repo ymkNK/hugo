@@ -4,7 +4,8 @@ categories: Note
 date: "2019-01-01T01:29:23Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
 subtitle: 《定位》
-tags: [Note]
+tags:
+    - Note
 title: 《定位》
 ---
 # “取法于上，仅得为中，取法为中，故为其下”。
