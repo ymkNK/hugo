@@ -79,11 +79,7 @@ task :hugo do
     @date = Time.now.strftime("%F")
     @finalmsg = "#{@date}-#{@slug}"
     system "hugo"
-    system "cd public"
-    system "git add ."
-    system "git commit -m \"#{@finalmsg}\""
-    system "git status"
-    system "git push"
+    system "cd public && git add . && git commit -m \"#{@finalmsg}\" && git status && git push"
     puts "git push \"#{@finalmsg}\""
 end
 

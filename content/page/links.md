@@ -10,8 +10,8 @@ menu:
         pre: link
 ---
 ## 友人
-- 前端大佬 [@Leto](http://blog.letow.top/)
-- 好男人 [@bsyze](http://www.bsyze.com/)
+- Leto [@Leto](http://blog.letow.top/)
+- Bsyze [@bsyze](http://www.bsyze.com/)
 
 ## 感谢
-- 本博客主题作者 [@Jimmy](https://jimmycai.com/)
+- The theme is designed by  [@Jimmy](https://jimmycai.com/)
