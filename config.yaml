@@ -41,7 +41,7 @@ params:
             src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
 
     article:
-        math: false
+        math: true
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
@@ -130,7 +130,7 @@ menu:
 related:
     includeNewer: true
     threshold: 60
-    toLower: false
+    toLower: true
     indices:
         - name: tags
           weight: 100
