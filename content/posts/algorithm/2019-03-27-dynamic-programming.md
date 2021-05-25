@@ -1,5 +1,6 @@
 ---
 author: ymkNK
+slug: dynamic-programming
 categories: 
     - Algorithm
 date: "2019-03-27T20:38:15Z"
