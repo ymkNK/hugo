@@ -101,7 +101,7 @@ params:
         opengraph:
             enabled: false
             local: false
-            src:
+            src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
 
     colorScheme:
         # Display toggle
