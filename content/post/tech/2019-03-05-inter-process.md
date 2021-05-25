@@ -3,7 +3,7 @@ author: ymkNK
 categories: Tech
 date: "2019-03-05T16:22:56Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/4.jpg
-subtitle: 进程间通信的方式
+slug: inter-process
 tags: 
     - Tech
 title: 进程间通信的方式

@@ -3,7 +3,7 @@ author: ymkNK
 categories: Tech
 date: "2019-02-22T21:46:09Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/3.jpg
-subtitle: yamlToJava
+slug: yamlbeans
 tags: 
     - Tech
 title: Yaml和Java对象之间的相互转换

@@ -3,7 +3,7 @@ author: ymkNK
 categories: Database
 date: "2020-09-18T17:27:51Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/6.jpg
-subtitle: what is transaction?
+slug: what is transaction
 tags: 
     - Database
 title: 什么是事务？

@@ -3,7 +3,7 @@ author: ymkNK
 categories: Tech
 date: "2019-07-26T11:01:52Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/3.jpg
-subtitle: 使用Jenkins回调获取状态
+slug: jenkins-callback
 tags: 
     - Jenkins
 title: 使用Jenkins回调获取状态

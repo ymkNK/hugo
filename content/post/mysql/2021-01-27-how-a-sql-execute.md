@@ -3,7 +3,7 @@ author: ymkNK
 categories: MySQL
 date: "2021-01-27T14:46:13Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/6.jpg
-subtitle: how-a-sql-executes
+slug: how-a-sql-executes
 tags: 
     - MySQL
 title: 基础架构：一条SQL更新语句是如何执行的？

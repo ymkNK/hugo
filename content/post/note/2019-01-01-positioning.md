@@ -3,7 +3,7 @@ author: ymkNK
 categories: Note
 date: "2019-01-01T01:29:23Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
-subtitle: 《定位》
+slug: positioning
 tags:
     - Note
 title: 《定位》

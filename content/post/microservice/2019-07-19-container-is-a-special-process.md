@@ -3,7 +3,7 @@ author: ymkNK
 categories: MicroService
 date: "2019-07-19T11:56:44Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/1.jpg
-subtitle: 容器就是一个特殊的进程
+slug: container-is-a-special-process
 tags: 
     - MicroService
 title: 容器就是一个特殊的进程

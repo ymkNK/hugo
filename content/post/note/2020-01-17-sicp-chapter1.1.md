@@ -3,7 +3,7 @@ author: ymkNK
 categories: Note
 date: "2020-01-17T11:13:47Z"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/5.jpg
-subtitle: Structure and Interpretation of Computer Programs
+slug: sicp-chapter1.1
 tags: 
     - Note
 title: Structure and Interpretation of Computer Programs 读书笔记 Chapter 1 构造过程抽象 1.1
