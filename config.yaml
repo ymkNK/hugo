@@ -51,11 +51,11 @@ params:
         provider: gitalk
 
         gitalk:
-            clientID: aaf5fc3a72ea9ce81d62
-            clientSecret: 7792527b47af3239ddbc2274fb5fd141c28d8339
-            repo: public
-            owner: ymkNK
-            admin: ['ymkNK']
+            clientID: 'aaf5fc3a72ea9ce81d62'
+            clientSecret: '7792527b47af3239ddbc2274fb5fd141c28d8339'
+            repo: 'ymkNK.github.io'
+            owner: 'ymkNK'
+            admin: 'ymkNK'
             distractionFreeMode: true
 
         utterances:
