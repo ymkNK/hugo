@@ -8,7 +8,7 @@ title: lllovol
 disqusShortname: hugo-theme-stack
 
 # GA Tracking ID
-googleAnalytics:
+googleAnalytics: G-MK7GTCNC34
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
@@ -34,7 +34,7 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
+        emoji: ⚖️
         subtitle: Stay Hungry, Stay Foolish
         avatar:
             local: false
