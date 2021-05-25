@@ -15,7 +15,7 @@ googleAnalytics: G-MK7GTCNC34
 DefaultContentLanguage: en
 
 permalinks:
-    post: /:slug/
+    post: /p/:slug/
     page: /:slug/
 
 params:
