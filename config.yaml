@@ -141,3 +141,8 @@ related:
 markup:
     highlight:
         noClasses: false
+
+links:
+    - name: leto
+      href: http://blog.letow.top/
+      description: 前端大佬
