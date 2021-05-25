@@ -73,3 +73,17 @@ task :git do
     system "git push gitee"
     puts "git push \"#{@finalmsg}\""
 end
+
+task :hugo do
+    @slug = 'build hugo'
+    @date = Time.now.strftime("%F")
+    @finalmsg = "#{@date}-#{@slug}"
+    system "hugo"
+    system "cd public"
+    system "git add ."
+    system "git commit -m \"#{@finalmsg}\""
+    system "git status"
+    system "git push"
+    puts "git push \"#{@finalmsg}\""
+end
+
