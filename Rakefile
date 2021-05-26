@@ -4,7 +4,7 @@ require 'fileutils'
 
 desc "创建新 post"
 task :new do
-  puts "请输入要创建的文章文件文件名字："
+    puts "请输入要创建的文章文件文件名字："
     @url = STDIN.gets.chomp
     puts "请输入文章的 标题："
     @name = STDIN.gets.chomp
