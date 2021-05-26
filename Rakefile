@@ -89,7 +89,7 @@ task :tag do
   @tag = STDIN.gets.chomp
   @directory_name = @tag.downcase
   @directory_url = "content/categories/#{@directory_name}"
-  @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/#{@directory_name}.jpg"
+  @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/tags/#{@directory_name}.jpg"
 
   @slug = "#{@directory_name}"
 
@@ -121,5 +121,5 @@ task :tag do
           file.puts "---"
   end
   puts "rake new tag successfully"
-  exec "vim #{@tag_name}"
+  # exec "vim #{@tag_name}"
 end
