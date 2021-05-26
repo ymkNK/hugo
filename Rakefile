@@ -1,9 +1,9 @@
-task :default => :new
+task :default => :post
 
 require 'fileutils'
 
 desc "创建新 post"
-task :new do
+task :post do
     puts "请输入要创建的文章文件文件名字："
     @url = STDIN.gets.chomp
     puts "请输入文章的 标题："
@@ -83,23 +83,31 @@ task :hugo do
     puts "git push \"#{@finalmsg}\""
 end
 
-
 task :tag do
-  puts "请输入要创建的tag名字："
-  @tag = STDIN.gets.chomp
-  @directory_name = @tag.downcase
-  @slug = "#{@directory_name}"
-  @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/tags/#{@directory_name}.jpg"
-
-  @directory_url = "content/categories/#{@directory_name}"
-  create_tags @directory_url, @tag, @slug, @img
-  @directory_url = "content/tags/#{@directory_name}"
-  create_tags @directory_url, @tag, @slug, @img
-
+    puts "请输入要创建的tag名字："
+    @tag = STDIN.gets.chomp
+    @type = "tags"
+    create_tag_or_category @type, @tag
 end
 
+task :category do
+    puts "请输入要创建的category名字："
+    @tag = STDIN.gets.chomp
+    @type = "categories"
+    create_tag_or_category @type, @tag
+end
 
-def create_tags (directory_url, tag, slug, img)
+def create_tag_or_category (type, tag)
+    @directory_name = @tag.downcase
+    @slug = "#{@directory_name}"
+    @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/tags/#{@directory_name}.jpg"
+
+    @directory_url = "content/#{@type}/#{@directory_name}"
+    create_file @directory_url, @tag, @slug, @img
+    puts "rake new #{@type} end."
+end
+
+def create_file (directory_url, tag, slug, img)
   if File.directory?(@directory_url)
       puts "The directory: #{@directory_url} has existed."
   else
@@ -111,7 +119,8 @@ def create_tags (directory_url, tag, slug, img)
   @tag_name = "#{@directory_url}/_index.md"
 
   if File.exist?(@tag_name)
-     abort("文件名已经存在！创建失败")
+     puts "文件名已经存在！创建失败"
+     return
   end
 
   FileUtils.touch(@tag_name)
@@ -126,5 +135,4 @@ def create_tags (directory_url, tag, slug, img)
           file.puts "    color: #fff"
           file.puts "---"
   end
-  puts "rake new categories/tags successfully"
 end
