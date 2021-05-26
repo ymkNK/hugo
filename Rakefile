@@ -88,11 +88,18 @@ task :tag do
   puts "请输入要创建的tag名字："
   @tag = STDIN.gets.chomp
   @directory_name = @tag.downcase
-  @directory_url = "content/categories/#{@directory_name}"
+  @slug = "#{@directory_name}"
   @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/tags/#{@directory_name}.jpg"
 
-  @slug = "#{@directory_name}"
+  @directory_url = "content/categories/#{@directory_name}"
+  create_tags @directory_url, @tag, @slug, @img
+  @directory_url = "content/tags/#{@directory_name}"
+  create_tags @directory_url, @tag, @slug, @img
 
+end
+
+
+def create_tags (directory_url, tag, slug, img)
   if File.directory?(@directory_url)
       puts "The directory: #{@directory_url} has existed."
   else
@@ -100,7 +107,7 @@ task :tag do
       puts "The directory: #{@directory_url} has created."
   end
 
-  # 对应分类的文件放进对应的文件夹当中
+  # 对应分类的文件放进对应的categories文件夹当中
   @tag_name = "#{@directory_url}/_index.md"
 
   if File.exist?(@tag_name)
@@ -117,9 +124,7 @@ task :tag do
           file.puts "style:"
           file.puts "    background: #2a9d8f"
           file.puts "    color: #fff"
-
           file.puts "---"
   end
-  puts "rake new tag successfully"
-  # exec "vim #{@tag_name}"
+  puts "rake new categories/tags successfully"
 end
