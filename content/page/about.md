@@ -1,7 +1,8 @@
 ---
-title: About
+title: 关于
 description: About me
 date: '2021-5-25'
+slug: about
 aliases:
   - about-me
   - about-hugo

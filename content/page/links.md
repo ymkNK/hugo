@@ -1,5 +1,5 @@
 ---
-title: "Links"
+title: "链接"
 date: 2021-05-25
 layout: "links"
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/2.jpg

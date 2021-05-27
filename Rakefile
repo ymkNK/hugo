@@ -97,6 +97,10 @@ task :category do
     create_tag_or_category @type, @tag
 end
 
+def create_post()
+
+end
+
 def create_tag_or_category (type, tag)
     @directory_name = @tag.downcase
     @slug = "#{@directory_name}"

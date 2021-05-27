@@ -12,7 +12,7 @@ googleAnalytics: G-MK7GTCNC34
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
-DefaultContentLanguage: en
+DefaultContentLanguage: zh-cn
 
 permalinks:
     post: /p/:slug/
@@ -35,7 +35,7 @@ params:
 
     sidebar:
         emoji: ⚖️
-        subtitle: Stay Hungry, Stay Foolish
+        subtitle: "好学若饥，谦卑若愚"
         avatar:
             local: false
             src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
@@ -122,7 +122,7 @@ params:
 menu:
     main:
         - identifier: home
-          name: Home
+          name: 主页
           url: /
           weight: -100
           pre: home
