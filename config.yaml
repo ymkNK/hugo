@@ -35,7 +35,7 @@ params:
 
     sidebar:
         emoji: ⚖️
-        subtitle: "好学若饥，谦卑若愚"
+        subtitle: "Stay hungry, stay foolish."
         avatar:
             local: false
             src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
