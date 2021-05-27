@@ -9,15 +9,19 @@ task :new do
 
     puts "请输入要创建的 文件名字："
     @name = STDIN.gets.chomp
+    @name = @name.downcase.strip.gsub(' ', '-')
 
     puts "请输入文章的 标题："
     @title = STDIN.gets.chomp
 
     puts "请输入文章的 categories, 以逗号分隔："
     @categories = STDIN.gets.chomp
+    @categories = format_tags_or_categories @origin = @categories
+
 
     puts "请输入文章的 tags, 以逗号分隔："
     @tags = STDIN.gets.chomp
+    @tags = format_tags_or_categories @origin = @tags
 
     # 需要检查一下文章目录是否存在
     @root_path = "content/post"
@@ -93,6 +97,13 @@ task :category do
 end
 
 ####################### 方法区 #######################
+
+def format_tags_or_categories(origin)
+    split_array = @origin.split(",")
+    res = Array.new
+    res = split_array.collect{ |x|x.capitalize }
+    return res.join(",")
+end
 
 def check_or_create_dir(dir)
     puts "Check or create the dir : #{@dir}"
