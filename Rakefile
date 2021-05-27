@@ -49,7 +49,7 @@ task :new do
                "categories: [#{@categories}]" + "\n" +
                "tags: [#{@tags}]" + "\n" +
                "date: #{Time.now}" + "\n" +
-               "img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/#{@img_num}.jpg" + "\n" +
+               "img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/#{@img_num}.jpeg" + "\n" +
                "slug: #{@slug}" + "\n" +
                "---"
     create_file @file_dir = @post_name, @content
