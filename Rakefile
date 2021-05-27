@@ -1,60 +1,55 @@
-task :default => :post
+task :default => :new
 
 require 'fileutils'
 
-desc "创建新 post"
-task :post do
-    puts "请输入要创建的文章文件文件名字："
-    @url = STDIN.gets.chomp
-    puts "请输入文章的 标题："
-    @name = STDIN.gets.chomp
-    puts "请输入文章的 子标题："
-    @subtitle = STDIN.gets.chomp
-    # puts "请输入文章的 分类，以空格分隔："
-    # @categories = STDIN.gets.chomp
-    # 现在这俩没啥区别了，就只用输入一个就行了
-    puts "请输入文章的 标签："
-    @tag = STDIN.gets.chomp
 
-    @slug = "#{@url}"
-    @slug = @slug.downcase.strip.gsub(' ', '-')
+desc "创建新 post"
+task :new do
+    time = Time.new
+
+    puts "请输入要创建的 文件名字："
+    @name = STDIN.gets.chomp
+
+    puts "请输入文章的 标题："
+    @title = STDIN.gets.chomp
+
+    puts "请输入文章的 categories, 以逗号分隔："
+    @categories = STDIN.gets.chomp
+
+    puts "请输入文章的 tags, 以逗号分隔："
+    @tags = STDIN.gets.chomp
+
+    # 需要检查一下文章目录是否存在
+    @root_path = "content/post"
+
+    check_or_create_dir(@dir = "#{@root_path}/#{time.year}")
+    check_or_create_dir(@dir = "#{@root_path}/#{time.year}/#{time.month}")
+
     @date = Time.now.strftime("%F")
+    @base_path = "#{time.year}/#{time.month}"
+    @file_name = @date + "-" + @name
+
+    @slug = "#{@base_path}/#{@name}"
+    @slug = @slug.downcase.strip.gsub(' ', '-')
 
     # 生成随机封面
     @img_num = rand(1...11)
-    # 需要检查一下对应tag的目录是否存在
-    @directory_name = @tag.downcase
-    @directory_url = "_posts/#{@directory_name}"
-    if File.directory?(@directory_url)
-        puts "The directory: #{@directory_url} has existed."
-    else
-        FileUtils.mkdir(@directory_url)
-        puts "The directory: #{@directory_url} has created."
-    end
+    @directory_url = "#{@root_path}/#{@base_path}"
 
     # 对应分类的文件放进对应的文件夹当中
-    @post_name = "#{@directory_url}/#{@date}-#{@slug}.md"
+    @post_name = "#{@directory_url}/#{@file_name}.md"
 
-    if File.exist?(@post_name)
-            abort("文件名已经存在！创建失败")
-    end
+    @content = "---" + "\n" +
+               "title: #{@title}" + "\n" +
+               "author: ymkNK" + "\n" +
+               "categories: [#{@categories}]" + "\n" +
+               "tags: [#{@tags}]" + "\n" +
+               "date: #{Time.now}" + "\n" +
+               "img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/#{@img_num}.jpg" + "\n" +
+               "slug: #{@slug}" + "\n" +
+               "---"
+    create_file @file_dir = @post_name, @content
 
-    FileUtils.touch(@post_name)
-    open(@post_name, 'a') do |file|
-            file.puts "---"
-            file.puts "layout: post"
-            file.puts "title: #{@name}"
-            file.puts "subtitle: #{@subtitle}"
-            file.puts "author: ymkNK"
-            file.puts "date: #{Time.now}"
-            # tag和categories一致了，因为目前这俩没啥太大区别
-            file.puts "categories: #{@tag}"
-            file.puts "tag: #{@tag}"
-            file.puts "img: #{@img_num}.jpg"
-            file.puts "---"
-    end
-    puts "rake new successfully"
-    exec "vim #{@post_name}"
 end
 
 task :git do
@@ -87,56 +82,67 @@ task :tag do
     puts "请输入要创建的tag名字："
     @tag = STDIN.gets.chomp
     @type = "tags"
-    create_tag_or_category @type, @tag
+    build_tag_or_category @type, @tag
 end
 
 task :category do
     puts "请输入要创建的category名字："
     @tag = STDIN.gets.chomp
     @type = "categories"
-    create_tag_or_category @type, @tag
+    build_tag_or_category @type, @tag
 end
 
-def create_post()
+####################### 方法区 #######################
 
+def check_or_create_dir(dir)
+    puts "Check or create the dir : #{@dir}"
+    if File.directory?(@dir)
+        puts "The directory: #{@dir} has existed."
+    else
+        FileUtils.mkdir(@dir)
+        puts "The directory: #{@dir} has created."
+    end
 end
 
-def create_tag_or_category (type, tag)
+def build_tag_or_category (type, tag)
+    @tag = tag.capitalize
     @directory_name = @tag.downcase
     @slug = "#{@directory_name}"
     @img = "https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/tags/#{@directory_name}.jpg"
 
     @directory_url = "content/#{@type}/#{@directory_name}"
-    create_file @directory_url, @tag, @slug, @img
-    puts "rake new #{@type} end."
+    create_tag_or_category_file @directory_url, @tag, @slug, @img
+    puts "rake new #{@type} #{@tag} end."
 end
 
-def create_file (directory_url, tag, slug, img)
-  if File.directory?(@directory_url)
-      puts "The directory: #{@directory_url} has existed."
-  else
-      FileUtils.mkdir(@directory_url)
-      puts "The directory: #{@directory_url} has created."
-  end
+def create_tag_or_category_file (directory_url, tag, slug, img)
+    check_or_create_dir @dir=@directory_url
 
-  # 对应分类的文件放进对应的categories文件夹当中
-  @tag_name = "#{@directory_url}/_index.md"
+    # 对应分类的文件放进对应的categories或者tags文件夹当中
+    @file_dir = "#{@directory_url}/_index.md"
 
-  if File.exist?(@tag_name)
-     puts "文件名已经存在！创建失败"
-     return
-  end
+    @content = "---" + "\n" +
+               "title: #{@tag}" + "\n" +
+               "description: #{@tag}" + "\n" +
+               "slug: #{@slug}" + "\n" +
+               "img: #{@img}" + "\n" +
+               "style:" + "\n" +
+               "    background: #2a9d8f" + "\n" +
+               "    color: #fff" + "\n" +
+               "---"
+    create_file @file_dir, @content
+end
 
-  FileUtils.touch(@tag_name)
-  open(@tag_name, 'a') do |file|
-          file.puts "---"
-          file.puts "title: #{@tag}"
-          file.puts "description: #{@tag}"
-          file.puts "slug: #{@slug}"
-          file.puts "img: #{@img}"
-          file.puts "style:"
-          file.puts "    background: #2a9d8f"
-          file.puts "    color: #fff"
-          file.puts "---"
-  end
+def create_file (file_dir, content)
+    if File.exist?(@file_dir)
+        puts "#{@file_dir} 文件已经存在！创建失败"
+        return
+    end
+
+    FileUtils.touch(@file_dir)
+    open(@file_dir, 'a') do |file|
+        file.puts @content
+    end
+    puts "#{@file_dir} 文件创建成功 内容如下:"
+    puts @content
 end
