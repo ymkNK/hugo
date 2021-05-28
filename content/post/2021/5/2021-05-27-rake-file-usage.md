@@ -1,3 +1,56 @@
+---
+title: 从Jekyll迁移至Hugo
+author: ymkNK
+categories: [Tech]
+tags: [Ruby,Tech,Hugo]
+date: 2021-05-27 19:52:17 +0800
+img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/26.jpeg
+slug: 2021/5/rake-file-usage
+---
+最近将博客背后的静态引擎，从Jekyll框架切换为了Hugo。也折腾了不少时间，现在总结一下其中的过程吧
+
+### 准备
+1. Go语言的环境 [Go官网](https://golang.org/)
+2. Hugo的安装 [Hugo官网](https://gohugo.io/)
+3. 选择一个喜欢的hugo主题进行搭建, [Hugo官网主题](https://themes.gohugo.io/)（本博客使用的主题是[hugo-theme-stack](https://github.com/CaiJimmy/hugo-theme-stack)）
+
+### 主题个性化配置
+hugo创建的基本流程网络上很多，这里就不过多赘述，一般选择了相应主题后，相关的主题介绍页，都会介绍如何使用，按照主题页指引即可。
+
+这里想主要讲一下主题的适配，hugo的主题样式主要是由layouts这个文件夹下的样式作为模板，themes下所使用的模板中的layouts也会生效，因此我们可以利用这个特性，在站点项目下面的layouts重写同名的布局文件。
+（本博客的gitalk就是利用了这一特性对主题进行了个性化配置）。
+
+### 撰写文章
+不同的hugo主题可能会有不同的文章存放策略，但是一定都是放在contents目录下，本文是放在contents/post目录下
+
+markdown文件的头格式如下
+
+    ---
+    title: 从Jekyll迁移至Hugo
+    author: ymkNK
+    categories: [Tech]
+    tags: [Ruby,Tech,Hugo]
+    date: 2021-05-27 19:52:17 +0800
+    img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/26.jpeg
+    slug: 2021/5/rake-file-usage
+    ---
+    
+用`---`和`+++`包围都可以，只是内容的格式要求有所区别，前者使用yaml的格式，后者使用toml的格式
+
+### Rakefile
+可以使用hugo new 快速创建文章，但是如果像我这样有定制化需求的创建（比如本博客的文章图片，以及目录格式等等），就需要手动进行处理，因此我使用了rakefile来通过简单的命令快速创建生成文章以及Tag
+
+#### rake new
+快速创建文章，并且可以随机生成oss图片库中的随机一个图片链接作为封面，按照创建的时间，自动放在content/post/#{@year}/#{@month}的目录下，方便归档（后期有考虑同时快速创建tags与categories）
+
+#### rake git
+快速执行git，一键提交本次更改的内容
+
+#### rake hugo
+快速构建生成hugo的静态网页，public文件夹下就是站点项目，本博客托管在github，因此可以直接push到仓库，进行直接发布
+
+#### 源代码
+```Ruby
 task :default => :new
 
 require 'fileutils'
@@ -156,3 +209,5 @@ def create_file (file_dir, content)
     puts "#{@file_dir} 文件创建成功 内容如下:"
     puts @content
 end
+
+```
