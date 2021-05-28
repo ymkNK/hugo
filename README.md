@@ -18,3 +18,6 @@
 
 # 初始化
 `git submodule update --init`
+
+# 站点仓库
+`cd public && git clone git@github.com:ymkNK/ymkNK.github.io.git`
