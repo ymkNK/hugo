@@ -50,6 +50,7 @@ task :new do
                "date: #{Time.now}" + "\n" +
                "img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/#{@img_num}.jpeg" + "\n" +
                "slug: #{@slug}" + "\n" +
+               "toc: true" + "\n" +
                "---"
     create_file @file_dir = @post_name, @content
 

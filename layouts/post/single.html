@@ -9,9 +9,9 @@
 
     {{ partial "article/article.html" . }}
 
-    {{ partial "partials/widget/toc.html" . }}
-
     {{ partial "article/components/related-contents" . }}
+
+    {{ partial "partials/widget/toc.html" . }}
 
     {{ if or (not (isset .Params "comments")) (eq .Params.comments "true")}}
         {{ partial "comments/include" . }}

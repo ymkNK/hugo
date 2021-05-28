@@ -6,6 +6,7 @@ tags: [Ruby,Tech,Hugo]
 date: 2021-05-27 19:52:17 +0800
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/26.jpeg
 slug: 2021/5/rake-file-usage
+toc: true
 ---
 最近将博客背后的静态引擎，从Jekyll框架切换为了Hugo。也折腾了不少时间，现在总结一下其中的过程吧
 
