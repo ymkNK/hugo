@@ -14,6 +14,8 @@ googleAnalytics: G-MK7GTCNC34
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, es, de, nl
 DefaultContentLanguage: zh-cn
 
+buildFuture: true
+
 permalinks:
     post: /p/:slug/
     page: /:slug/
