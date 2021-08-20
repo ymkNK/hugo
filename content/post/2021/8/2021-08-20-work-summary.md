@@ -1,5 +1,5 @@
 ---
-title: 2021年8月20日工作中的思考记录2021年8月20日
+title: 工作中的思考记录2021年8月20日
 author: ymkNK
 categories: [Summary]
 tags: [Summary]
