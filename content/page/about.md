@@ -17,7 +17,6 @@ comments: false
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/6.jpeg
 ---
 ## Info
-基本信息
 - 软件工程师
 - 四川人 现居北京
 - 2019年 毕业于南开大学
