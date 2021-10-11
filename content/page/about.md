@@ -16,9 +16,14 @@ menu:
 comments: false
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/6.jpeg
 ---
+## Info
+基本信息
 - 软件工程师
 - 四川人 现居北京
 - 2019年 毕业于南开大学
 - 本博客使用Hugo构建 [Stack主题](https://github.com/CaiJimmy/hugo-theme-stack)搭建, 托管于[Github](https://github.com/ymkNK/hugo)
+
+## More
+养了两只暹罗可可乐乐，详情请关注Bilibili频道[Rainbowly彩虹](https://space.bilibili.com/7857769)
 
 

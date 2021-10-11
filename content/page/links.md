@@ -14,8 +14,5 @@ comments: false
 - Leto [@Leto](http://blog.letow.top/)
 - Bsyze [@bsyze](http://www.bsyze.com/)
 
-## B站
-- [Rainbowly彩虹](https://space.bilibili.com/7857769)
-
 ## 感谢
 - The theme is designed by  [@Jimmy](https://jimmycai.com/)
