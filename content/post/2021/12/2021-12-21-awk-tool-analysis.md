@@ -26,7 +26,7 @@ history --i | awk '{print $4}' | sort | uniq -c | sort -k1,1nr | head -20
 
 ### 效果
 ```
- ~  history --i | awk '{print $4}' | sort | uniq -c | sort -k1,1nr | head -20
+ ~ > history --i | awk '{print $4}' | sort | uniq -c | sort -k1,1nr | head -20
 4570 git
  578 rake
  174 ****test
@@ -34,15 +34,14 @@ history --i | awk '{print $4}' | sort | uniq -c | sort -k1,1nr | head -20
  122 cd
  118 go
   80 testcover
-  61 sshymk
+  61 ssh***
   52 vim
   35 source
-  28 kinitymk
+  28 kinit
   27 goimports
   22 gofumpt
   20 sudo
   17 brew
-  17 kinit
   17 open
   16 echo
   15 ssh
