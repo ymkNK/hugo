@@ -171,4 +171,4 @@ Kent Beck提出了两顶帽子的比喻。使用重构技术进行软件开发�
 - Harold《重构HTML》
 - Michael Feather 《修改代码的艺术》
 - Jay Fields & Shane Harvey 写了关于Ruby的《重构》
-- [refactoring.com](http://refactoring.com)
+- 关于本书[refactoring.com](http://refactoring.com)
