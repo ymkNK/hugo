@@ -1,5 +1,5 @@
 ---
-title: Go并发编程学习笔记
+title: Go并发编程学习笔记-WaitGroup和Mutex
 author: ymkNK
 categories: [Go]
 tags: [Go]
@@ -8,7 +8,7 @@ img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/4.jpeg
 slug: 2022/1/go-concurrency
 toc: true
 ---
-# 原则
+##  原则
 **不要用共享内存来通信，而是使用通信来共享内存**
 
 ## 注意
@@ -38,6 +38,8 @@ func main() {
 这样写代码是不行，add放在主线程，done放在子协程中
 
 ### 如何实现
+> [详解Go中WaitGroup设计](https://segmentfault.com/a/1190000040653924)
+
 #### 简单思路
 1. Add() 内置count记录多少任务完成，通过加锁来保证安全
 2. Done() 完成后count--，加锁操作
@@ -51,7 +53,7 @@ type WaitGroup struct {
    noCopy noCopy
    // count Add()时增加这个值
    // wait  Wait() 时增加这个值
-   // sema  信号量，与此相关的有两个操作，增加信号量，协程挂起；减少信号量，唤醒协程
+   // semap  信号量，与此相关的有两个操作，增加信号量，协程挂起；减少信号量，唤醒协程
    state1 [3]uint32
 }
 ```
@@ -60,6 +62,11 @@ type WaitGroup struct {
 - 32位和64位的机器，这个state1的内存布局是不同的
 - 使用int32(state >> 32)位移操作拿到counter
 - uint32(state)拿到waiter
+
+#### 引申
+- 你知道ErrGroup吗？在日常开发中ErrGroup会比WaitGroup更实用. 因为所有如果有协程返回error, 可以通过ctx的机制，可以让其他的线程提前退出。
+- waitGroup最多支持Add()多大的值？ int32
+- waitGroup可以重复使用吗？ 可以 
 
 
 ## time.After不能和select、for放在一起用
@@ -77,3 +84,25 @@ func longRunning(messages <-chan string) {
 }
 ```
 
+## Mutex
+1. 在defer中执行解锁，能够保证执行操作一定被执行
+2. throw的panic不能恢复
+
+### 如何实现
+```Go
+type Mutex struct {
+   // 等待协程数|饥饿状态|是否被唤醒|是否被锁
+   // 00000000 00000000 00000000 00000|0|0|0
+   // 提问：为什么要有饥饿态呢？
+   state int32
+   // 信号量
+   sema  uint32
+}
+```
+
+#### 简单实现思路
+- Lock() for循环直到CAS成功为止
+- Unlock() 进行CAS
+
+#### 实际实现
+增加了一个饥饿态，其实就是一个队列。不断自旋来等待锁被释放、或者进入饥饿状态、或者不能再自旋。
