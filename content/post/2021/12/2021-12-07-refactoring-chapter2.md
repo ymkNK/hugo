@@ -5,7 +5,7 @@ categories: [Refactoring,Note]
 tags: [Refactoring,Note]
 date: 2021-12-07 21:05:58 +0800
 img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/6.jpeg
-slug: 2021/12/refactoring-principles
+slug: 2021/12/refactoring-chapter2
 toc: true
 ---
 ## 前言
