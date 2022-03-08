@@ -43,9 +43,11 @@ params:
             src: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/cat.jpg
 
     article:
-        math: true
+        math: false
+        toc: true
+        readingTime: true
         license:
-            enabled: true
+            enabled: false
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
