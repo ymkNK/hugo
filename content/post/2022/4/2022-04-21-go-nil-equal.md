@@ -62,7 +62,7 @@ func TestIsNilEqual(t *testing.T) {
 ### Non-nillable structs 非空结构体
 组合的 `struct` 类型也是不可空的，并且 struct 的默认值将包含其所有字段的默认值
 
-## Nillable 可为空类型
+### Nillable 可为空类型
 还有一种更高级到 `nillable` 类型，如果对应的类型未初始化，将会报错，触发 panic
 
 这些可以为 nillabe 类型:
