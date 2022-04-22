@@ -155,7 +155,8 @@ var _ = (func())(nil) == nil
 - 在源码中，显式地将 nil 赋值给接口时，接口的 type 和 data 都将为 nil。此时，接口与 nil 值判断是相等的
 - 但如果将一个带有类型的 nil 赋值给接口时，只有 data 为 nil，而 type 为 nil，此时，接口与 nil 判断将不相等。
 
-### 解决方式
+## 解决方式
+这里提供了一种针对类型不为空但是值为空的判断方式
 ```go
 // IsNil 判断指针,Slice,Map类型的值是否为空
 func IsNil(i interface{}) bool {
