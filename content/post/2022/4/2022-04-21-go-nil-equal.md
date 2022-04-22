@@ -83,15 +83,98 @@ func TestIsNilEqual(t *testing.T) {
 ### nil-channel 永远阻塞
 尝试从 nil 通道读取或写入 nil 通道将永远受阻。关闭 nil 通道会引起 Panic
 
+### nil预声明标识符nil没有默认类型
+Go中其它的预声明标识符都有各自的默认类型，比如
+- 预声明标识符true和false的默认类型均为内置类型bool。
+- 预声明标识符iota的默认类型为内置类型int。
+但是，预声明标识符nil没有一个默认类型，尽管它有很多潜在的可能类型。 事实上，预声明标识符nil是Go中唯一一个没有默认类型的类型不确定值。 我们必须在代码中提供足够的信息以便让编译器能够推断出一个类型不确定的nil值的期望类型。
+```go
+package main
+
+func main() {
+	// 代码中必须提供充足的信息来让编译器推断出某个nil的类型。
+	_ = (*struct{})(nil)
+	_ = []int(nil)
+	_ = map[int]bool(nil)
+	_ = chan string(nil)
+	_ = (func())(nil)
+	_ = interface{}(nil)
+
+	// 下面这一组和上面这一组等价。
+	var _ *struct{} = nil
+	var _ []int = nil
+	var _ map[int]bool = nil
+	var _ chan string = nil
+	var _ func() = nil
+	var _ interface{} = nil
+
+	// 下面这行编译不通过。
+	var _ = nil
+}
+```
+
+### 两个不同类型的nil值可能不能相互比较
+```go
+// error: 类型不匹配
+var _ = (*int)(nil) == (*bool)(nil)
+// error: 类型不匹配
+var _ = (chan int)(nil) == (chan bool)(nil)
+
+type IntPtr *int
+// 类型IntPtr的底层类型为*int。
+var _ = IntPtr(nil) == (*int)(nil)
+
+// 任何类型都实现了interface{}类型。
+var _ = (interface{})(nil) == (*int)(nil)
+
+// 一个双向通道可以隐式转换为和它的
+// 元素类型一样的单项通道类型。
+var _ = (chan int)(nil) == (chan<- int)(nil)
+var _ = (chan int)(nil) == (<-chan int)(nil)
+```
+
+### 同一个类型的两个nil值可能不能相互比较
+在Go中，map、slice和func类型是不支持比较类型。比较同一个不支持比较的类型的两个值（包括nil值）是非法的。 比如，下面的几个比较都编译不通过。
+```go
+var _ = ([]int)(nil) == ([]int)(nil)
+var _ = (map[string]int)(nil) == (map[string]int)(nil)
+var _ = (func())(nil) == (func())(nil)
+```
+但是，映射类型、切片类型和函数类型的任何值都可以和类型不确定的裸nil标识符比较。
+```go
+var _ = ([]int)(nil) == nil
+var _ = (map[string]int)(nil) == nil
+var _ = (func())(nil) == nil
+```
 
 ### nil!=nil
 - nil 在 Go语言中只能被赋值给指针和接口。
 - 但是接口在底层的实现有两个部分：
-  - type 
+  - type
   - data
 - 在源码中，显式地将 nil 赋值给接口时，接口的 type 和 data 都将为 nil。此时，接口与 nil 值判断是相等的
 - 但如果将一个带有类型的 nil 赋值给接口时，只有 data 为 nil，而 type 为 nil，此时，接口与 nil 判断将不相等。
 
+### 解决方式
+```go
+// IsNil 判断指针,Slice,Map类型的值是否为空
+func IsNil(i interface{}) bool {
+	// 首先判断i是否为nil
+	if i == nil {
+		return true
+	}
+
+	// 判断值是否为nil
+	vi := reflect.ValueOf(i)
+	if vi.Kind() == reflect.Ptr ||
+		vi.Kind() == reflect.Slice ||
+		vi.Kind() == reflect.Map {
+		return vi.IsNil()
+	}
+
+	return false
+}
+```
 
 
 ## 参考文档
