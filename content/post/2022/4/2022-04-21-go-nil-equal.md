@@ -1,5 +1,5 @@
 ---
-title: Go中经典nil!=nil
+title: Go中经典nil!=nil问题
 author: ymkNK
 categories: [Go]
 tags: [Go]
@@ -8,10 +8,10 @@ img: https://lllovol.oss-cn-beijing.aliyuncs.com/assets/img/post/17.jpeg
 slug: 2022/4/go-nil-equal
 toc: true
 ---
-# 背景
+## 背景
 最近在开发过程中遇到了一个奇怪的现象，对传入参数interface{}的做nil判断的时候，发现有些情况不符合预期，
 
-# 示例代码
+## 示例代码
 可以猜测一下下方代码执行后的打印结果
 ```go
 func TestIsNilEqual(t *testing.T) {
@@ -36,14 +36,14 @@ func TestIsNilEqual(t *testing.T) {
 }
 ```
 
-# 原因解析
+## 原因解析
 
-## 非空和空类型
+### 非空和空类型
 在 go 中类型可以是空或非空
 - 非空类型永远不能为 nil，并且永远不会导致nil-panic(等效于 Java 的 NullPointerException)
 - 处理空类型时，我们仍须谨慎一点，可能会导致nil-panic
 
-## 非空基本类型
+### 非空基本类型
 在 go 中，基本类型不可为空。像这样的声明，都会有默认0值
 
 |Types	|Zero value|
@@ -59,10 +59,10 @@ func TestIsNilEqual(t *testing.T) {
 |arrays of non-nillable types	|array of zero-values|
 |arrays of nillable types	|array of nil-values|
 
-## Non-nillable structs 非空结构体
+### Non-nillable structs 非空结构体
 组合的 `struct` 类型也是不可空的，并且 struct 的默认值将包含其所有字段的默认值
 
-# Nillable 可为空类型
+## Nillable 可为空类型
 还有一种更高级到 `nillable` 类型，如果对应的类型未初始化，将会报错，触发 panic
 
 这些可以为 nillabe 类型:
@@ -75,9 +75,16 @@ func TestIsNilEqual(t *testing.T) {
 
 但是，nil-slice 和 nil-maps 仍然可以使用，在我们开始使用它们之前不必进行初始化。
 - nil-maps 可以取值，但是不能赋值
-- 
+- nil-slices 在外部引用切片将导致死机，但是`len()`和`cap()`的操作不会导致死机出现。他们只返回`0`, 因为对于未初始化的切片，其容量和长度都为零，所以可以在 nil-slice 上成功调用 append
 
-## nil!=nil
+### 可为空的指针、函数和接口类型会引起 panic
+每当处理这些类型时，我们都必须考虑它们是否为零
+
+### nil-channel 永远阻塞
+尝试从 nil 通道读取或写入 nil 通道将永远受阻。关闭 nil 通道会引起 Panic
+
+
+### nil!=nil
 - nil 在 Go语言中只能被赋值给指针和接口。
 - 但是接口在底层的实现有两个部分：
   - type 
@@ -87,7 +94,7 @@ func TestIsNilEqual(t *testing.T) {
 
 
 
-# 参考文档
+## 参考文档
 - https://learnku.com/go/t/46496 原文作者：Summer
 - https://www.cnblogs.com/chenqionghe/p/11357013.html
 - https://gfw.go101.org/article/nil.html
